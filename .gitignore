@@ -1,0 +1,6 @@
+.env
+
+bin/
+
+# macOS :(
+.DS_Store
