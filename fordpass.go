@@ -332,6 +332,12 @@ func (a *vehicleAPI) runCommand(ctx context.Context, action string) error {
 			case 200:
 				// Success!
 				return nil
+			case 411:
+				if action == actionStartEngine {
+					return fmt.Errorf("Cannot remotely start engine while vehicle is in use (status %d)", commandStatus)
+				} else {
+					return fmt.Errorf("Unrecognized command status %d for action %s", commandStatus, action)
+				}
 			case 552:
 				// Waiting for status -- check back later!
 				continue
