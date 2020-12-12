@@ -43,7 +43,7 @@ func mustGetParams() (string, string, string) {
 }
 
 func main() {
-	ctx, _ := context.WithTimeout(context.Background(), time.Minute)
+	ctx, _ := context.WithTimeout(context.Background(), time.Minute*10)
 
 	username, password, vin := mustGetParams()
 	vehicleAPI := fordpass.NewVehicleAPI(username, password, vin)
